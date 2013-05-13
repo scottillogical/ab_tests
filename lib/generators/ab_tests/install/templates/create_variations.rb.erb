@@ -1,0 +1,13 @@
+class CreateVariations < ActiveRecord::Migration
+  def change
+    create_table :variations do |t|
+      t.string "test_name"
+      t.string "chosen_variation" 
+      t.integer "<%=user_id_field_name%>"
+
+      t.timestamps
+    end
+    add_index :variations, [:test_name, <%=user_id_field_name%> ]
+  end
+end
+

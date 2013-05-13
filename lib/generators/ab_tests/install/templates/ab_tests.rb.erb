@@ -1,0 +1,7 @@
+# stuff goes here
+
+AbTests.configure do |config|
+
+  # a unique identifier aka user_id, arrival_id - correlating the a/b tests to other user data
+  config.unique_identifier =  "<%= user_id_field_name.to_s %>"
+end
