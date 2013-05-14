@@ -3,15 +3,13 @@ require 'ab_tests/variation'
 module AbTests
   module ViewHelpers
     def ab_test(test_name, variation_names, unique_identifier,  &block)
-      user_id_field_name = AbTests.configuration.user_id_field_name
-      if previous_variation = AbTests::Variation.where(user_id_field_name =>  user_id_field, test_name: test_name).first
-        content = capture(previous_variation.chosen_variation, &block)
-      else
-        chosen_variation = variation_names.sample
-        AbTests::Variation.create(test_name: test_name, chosen_variation: chosen_variation, user_id_field_name => unique_identifier)
-        content = capture(chosen_variation, &block)
+      unique_id_field = AbTests.configuration.unique_identifier
+      if previous_variation = AbTests::Variation.where(unique_id_field => unique_identifier, test_name: test_name).first and unique_identifier
+        return capture(previous_variation.chosen_variation, &block)
       end
-      content
+      chosen_variation = variation_names.sample
+      AbTests::Variation.create(test_name: test_name, chosen_variation: chosen_variation, unique_id_field => unique_identifier)
+      capture(chosen_variation, &block)
     end
   end
 end

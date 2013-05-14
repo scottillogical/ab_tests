@@ -5,7 +5,7 @@ module AbTests
     class InstallGenerator < ::Rails::Generators::Base
       include Rails::Generators::Migration
       source_root File.expand_path('../templates', __FILE__)
-      argument :user_id_field_name, :type => :string, :default => "user_id", desc: "The user identifier for recording who saw which variation"
+      argument :unique_identifier, :type => :string, :default => "unique_identifier", desc: "The user identifier for recording who saw which variation"
       desc "Generate an initializer for configuration, and a migration for recording the test results.  Take one argument, USER_ID, which is merely the foreign key for tracking which users saw what."
 
 

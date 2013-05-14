@@ -1,6 +1,7 @@
 # AbTests
 
-TODO: Write a gem description
+AbTests is a simple gem for creating and deploying new a/b tests with only a simple addition of some ruby code in a view.
+
 
 ## Installation
 
@@ -11,6 +12,8 @@ Add this line to your application's Gemfile:
 And then execute:
 
     $ bundle
+    $ bundle exec rails g ab_tests:install
+    $ bundle exec rake db:migrate
 
 Or install it yourself as:
 
@@ -18,7 +21,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To create an a/b test merely define the following.
+
+    <%= ab_test "example test", ["variation one", "variation two"], nil do |variation| %>
+      <% if variation == "variation one" %>
+        <p>
+          Variation one
+        </p>
+      <% end %>
+      <% if variation == "variation one" %>
+        <p>
+          Variation two
+        </p>
+      <% end %>
+    <% end %>
+
+
+The ab_test helper takes the following arguements: test_name, an array of variation names, and a unique user idenitfier (optional).
+
+The results of the tests are stored in the variations table.
+
+
+Currently, AbTests does not support variation percentages.  To date I've only had to run 50/50s and other evenly proportioned tests and I merely removed the variations when I have picked a winner. 
+
+
+
 
 ## Contributing
 

@@ -4,8 +4,11 @@ require 'ab_tests/railtie' if defined?(Rails)
 module AbTests
 
   class << self
-    attr_accessor :configuration
+    def configuration
+      @configuration ||= Configuration.new
+    end
   end
+
 
   def self.configure
     self.configuration ||= Configuration.new
@@ -13,9 +16,11 @@ module AbTests
   end
 
   class Configuration
-    attr_accessor :user_id_field_name
+    attr_accessor :unique_identifier
 
     def initialize
+      @unique_identifier = :unique_identifier
     end
+
   end
 end

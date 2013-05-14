@@ -3,11 +3,11 @@ class CreateVariations < ActiveRecord::Migration
     create_table :variations do |t|
       t.string "test_name"
       t.string "chosen_variation" 
-      t.integer "<%=user_id_field_name%>"
+      t.integer "<%=unique_identifier%>"
 
       t.timestamps
     end
-    add_index :variations, [:test_name, <%=user_id_field_name%> ]
+    add_index :variations, [:test_name, "<%=unique_identifier%>" ]
   end
 end
 
