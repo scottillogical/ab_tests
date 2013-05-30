@@ -2,6 +2,7 @@
 
 AbTests is a simple gem for creating and deploying new a/b tests with only a simple addition of some ruby code in a view.
 
+For serious applications, I would recommend reading the source code of this gem and rolling your own version for easy customization.
 
 ## Installation
 
