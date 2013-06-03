@@ -30,7 +30,7 @@ To create an a/b test merely define the following.
           Variation one
         </p>
       <% end %>
-      <% if variation == "variation one" %>
+      <% if variation == "variation two" %>
         <p>
           Variation two
         </p>
