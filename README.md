@@ -24,7 +24,7 @@ Or install it yourself as:
 
 To create an a/b test merely define the following.
 
-    <%= ab_test "example test", ["variation one", "variation two"], nil do |variation| %>
+    <%= ab_test "example test", ["variation one", "variation two"], user_id do |variation| %>
       <% if variation == "variation one" %>
         <p>
           Variation one
